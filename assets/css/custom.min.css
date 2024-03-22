@@ -1,0 +1,24 @@
+/*    my css     */
+::-moz-selection {
+    color: white;
+    background: red;
+}
+
+::selection {
+    color: white;
+    background: red;
+}
+
+.ui-pnotify {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+.dataTables_paginate a {
+    padding: 6px 9px !important;
+    background: #ddd !important;
+    border-color: #ddd !important;
+}
+
+
+

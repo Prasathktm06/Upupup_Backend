@@ -1,0 +1,153 @@
+<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/popup.css">
+<style>
+    .datepicker {
+      z-index: 1600 !important; /* has to be larger than 1050 */
+    }
+</style>
+<div class="content-wrapper">
+     <section class="content-header">
+          <h1>Report</h1>
+          <div class="col-md-8" >
+                <a href="<?=base_url();?>reports/roles_excel" data-toggle="tooltip"  class="btn-info btn-demo pull-right btn-warning" style="margin-top: -29px;margin-right: -358px;background-color: #12c5f5;">Download  <i class="fa fa-download "></i></a>
+                <button type="button" class="btn btn-info btn-demo pull-right" data-toggle="modal" data-target="#myModal2" style="margin-top: -29px;margin-right: -230px;background-color: #d47b25;">Filter</button> 
+                
+          </div>
+          <?php $_SESSION['roles_list']=$list; ?> 
+     </section>
+     <section class="content">
+          <div class="row">
+               <div class="col-xs-12">
+                    <div class="box">
+                         <div class="box-header">
+                              <h3 class="box-title"><?=$heading?></h3>
+                         </div>
+            
+                         <div class="box-body">
+                              <div class="table-responsive">
+                                   <table id="example1" class="table table-bordered table-hover">
+                                        <thead>
+                                             <tr>
+                                                  <th class="text-center">#</th>
+                                                  <th class="text-center">Role Name</th>
+                                                  <th class="text-center">Permissions</th>
+                                                  <th class="text-center">Created on</th>
+                                                  <!-- <th class="text-center">Modified on</th> -->
+                                             </tr>
+                                        </thead>
+                                        <tbody>
+                                             <?php $i=1; foreach ($list as $key => $value) { ?>
+                                             <tr>
+                                                  <td class="text-center"><?=$i?></td>
+                                                  <td class="text-center"><?=$value['name']?></td>
+                                                  <td class="text-center"><?=$value['permissions']?></td>
+                                                  <td class="text-center">
+                                                    <?php if($value['added_date']!=NULL){?>
+                                                      <?=date( ' d-M-Y ',strtotime($value['added_date']))?>
+                                                    <?php }?>
+                                                  </td>
+                                                  <!-- <td class="text-center"><?=$value['sports']?></td> -->
+                                             </tr>
+                                             <?php $i++;} ?>
+                                        </tbody>
+                                   </table>
+                              </div>
+                         </div>
+                    </div>
+		     </div>
+	     </div>
+     </section>
+      <div class="container demo">
+        <!-- Modal -->
+        <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel2">Filter</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <form role="form" method="post" action="<?=base_url();?>reports/roles">
+                            <div class="box-body">
+                                <div class="form-group " >
+                                    <label for=""> Roles</label>
+                                    <div class="input-group">
+                                         <select class="select2" style="width: 250px;" name="role" id="role" >
+                                              <option></option>
+                                              <?php foreach ($roles as $key => $value) { ?>
+                                                   <option value="<?=$value['role_id']?>"><?=$value['name']?></option>
+                                              <?php } ?>
+                                         </select>
+                                    </div>
+                               </div>
+
+                               <div class="form-group " >
+                                    <label for=""> Permission</label>
+                                    <div class="input-group">
+                                         <select class="select2" style="width: 250px;" name="permission" id="permission" >
+                                              <option></option>
+                                              <?php foreach ($permission as $key2 => $value2) { ?>
+                                                   <option value="<?=$value2['perm_id']?>"><?=$value2['name']?></option>
+                                              <?php } ?>
+                                         </select>
+                                    </div>
+                               </div>
+
+                            </div>
+
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary" value="submit" name="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div><!-- modal-content -->
+            </div><!-- modal-dialog -->
+        </div><!-- modal -->
+    </div><!-- container -->
+</div>
+ <script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "scrollX" : true,
+      "scrollCollapse" : true
+    });
+  });
+/*$(document).ready(function() {
+  $(".datepicker").datepicker( {
+    format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years"
+});
+});*/
+</script>
+<script type="text/javascript">
+ var x=1;
+$( document ).ready(function() {
+
+  $('#datepicker1').datepicker({
+ onSelect: function(dateStr) 
+        {         
+             var start_date= $("#datepicker2").val(dateStr);
+            $('#datepicker2').datepicker('option', 'minDate', dateStr);
+        }
+
+});
+ $('#datepicker2').datepicker({
+});
+
+
+
+});
+
+</script>  
+
+

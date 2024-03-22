@@ -1,0 +1,28 @@
+define({
+  "name": "UpUpUp App",
+  "version": "0.1.0",
+  "description": "Apidoc for UpUpUp App project.",
+  "title": "ApiDoc - UpUpUp App",
+  "url": "http://app.appzoc.com/upupup/api/",
+  "sampleUrl": "http://app.appzoc.com/upupup/apidocs/example",
+  "header": {
+    "title": "Welcome to UpUpUp App",
+    "content": "<p>This is the userguide to use various api's for Masari App,developed by WebCastle Team for Appzoc Team.</p>\n"
+  },
+  "footer": {
+    "title": "Thank you",
+    "content": "<h1>Thank you</h1>\n"
+  },
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  },
+  "defaultVersion": "0.0.0",
+  "apidoc": "0.3.0",
+  "generator": {
+    "name": "apidoc",
+    "time": "2017-02-13T17:28:16.610Z",
+    "url": "http://apidocjs.com",
+    "version": "0.17.5"
+  }
+});
